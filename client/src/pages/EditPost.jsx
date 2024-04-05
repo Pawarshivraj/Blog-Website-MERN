@@ -16,7 +16,7 @@ const EditPost = () => {
   const [error,setError]=useState("");  
 
   const {id} = useParams();
-  // console.log("edit file: ",id);
+  console.log("edit file: ",id);
   const navigate=useNavigate();
   const token =currentUser?.token;
   //redirect to login page to the any user who isn't logged in 
