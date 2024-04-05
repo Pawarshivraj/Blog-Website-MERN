@@ -30,7 +30,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/users/${currentUser.id}`,
+        `${BASE_URL_IMAGE}/users/${currentUser.id}`,
         { withCredentials: true, headers: { Authorization: `Bearer ${token}` } }
       );
       const { name, email, avatar } = response.data;
@@ -47,7 +47,7 @@ const UserProfile = () => {
       const postData = new FormData();
       postData.set("avatar", avatar);
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/users/change-avatar`,
+        `${BASE_URL}/users/change-avatar`,
         postData,
         { withCredentials: true, headers: { Authorization: `Bearer ${token}` } }
       );
