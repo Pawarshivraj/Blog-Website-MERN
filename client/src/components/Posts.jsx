@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PostItem from './PostItem';
 import Loader from './Loader';
 import axios from 'axios'
+import { BASE_URL } from '../api';
 
 const Posts = () => {
     const [posts,setPosts]=useState([])
@@ -11,7 +12,8 @@ const Posts = () => {
       const fetchPosts = async() =>{
          setIsLoading(true);
          try {
-          const response =await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
+          // const response =await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`);
+          const response =await axios.get(`${BASE_URL}/posts`);
           setPosts(response?.data);
          } catch (err) {
           console.log(err);

@@ -1,0 +1,1 @@
+export const BASE_URL = "https://blog-website-mern-u4zc.onrender.com/api"; 
