@@ -3,6 +3,7 @@ import { Link ,useNavigate} from "react-router-dom";
 import axios from 'axios'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from "../api";
 const Register = () => {
   const [userData, setUserData] = useState({
     name: "",
@@ -22,7 +23,7 @@ const registerUser =async(e) =>{
     e.preventDefault();
     setError('')
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/register`,userData)
+      const response = await axios.post(`${BASE_URL}/users/register`,userData)
     const  newUser = await response.data;
     console.log(newUser);
     if(!newUser)

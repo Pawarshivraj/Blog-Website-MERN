@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PostAuthor from './PostAuthor'
+import { BASE_URL_IMAGE } from '../api';
 
 const PostItem = ({postID,category,title,description,authorID,thumbnail,createdAt}) => {
   const shortDescription= description.length >145 ? description.substr(0,145) + "..." : description;
@@ -9,7 +10,7 @@ const PostItem = ({postID,category,title,description,authorID,thumbnail,createdA
   return (
     <article className='post'>
     <div className="post__thumbnail">
-        <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${thumbnail}`} alt={title} />
+        <img src={`${BASE_URL_IMAGE}/uploads/${thumbnail}`} alt={title} />
 
     </div>
     <div className="post__content">

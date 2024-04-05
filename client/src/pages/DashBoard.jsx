@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import axios from "axios";
 import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
+import { BASE_URL_IMAGE } from "../api";
 
 const DashBoard = () => {
   const [posts ,setPosts]=useState([]);
@@ -52,7 +53,7 @@ const DashBoard = () => {
               <article key={post._id} className="dashboard__post">
                 <div className="dashboard__post-info">
                   <div className="dashboard__post-thumbnail">
-                    <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${post.thumbnail}`} alt="" />
+                    <img src={`${BASE_URL_IMAGE}/uploads/${post.thumbnail}`} alt="" />
                   </div>
                   <h5>{post.title}</h5>
                 </div>

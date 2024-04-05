@@ -2,6 +2,7 @@ import React,{useContext,useEffect,useState} from 'react'
 import PostItem from '../components/PostItem';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { BASE_URL } from '../api';
 const AuthorsPost = () => {
   const [posts,setPosts]=useState([])
   const [isLoading,setIsLoading]=useState(false);
@@ -11,7 +12,7 @@ const AuthorsPost = () => {
     const fetchPosts = async() =>{
        setIsLoading(true);
        try {
-        const response =await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/users/${id}`)
+        const response =await axios.get(`${BASE_URL}/posts/users/${id}`)
         setPosts(response?.data);
        } catch (err) {
         console.log(err);

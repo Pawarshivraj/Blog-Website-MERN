@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from "../api";
 const CreatePosts = () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Uncategorized");
@@ -63,7 +64,7 @@ const CreatePosts = () => {
    postData.set('thumbnail',thumbnail);
 
    try {
-    const response=await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`,postData,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
+    const response=await axios.post(`${BASE_URL}/posts`,postData,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
     if(response.status==201)
     { 
       toast.success('New Post created Successfully!', {

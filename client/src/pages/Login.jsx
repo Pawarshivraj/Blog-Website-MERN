@@ -29,7 +29,6 @@ const Login = () => {
    e.preventDefault();
    setError('');
    try {
-    // const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/login`,userData
     const response = await axios.post(`${BASE_URL}/users/login`,userData);
     const user = await response.data;
     setCurrentUser(user)

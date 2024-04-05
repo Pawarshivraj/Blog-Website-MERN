@@ -6,6 +6,7 @@ import { UserContext } from '../context/userContext';
 import axios from "axios";
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from "../api";
 const EditPost = () => {
   const {currentUser}=useContext(UserContext);
   const [title, setTitle] = useState("");
@@ -67,7 +68,7 @@ const EditPost = () => {
     postData.set('thumbnail',thumbnail);
  
     try {
-     const response=await axios.patch(`${process.env.REACT_APP_BASE_URL}/posts/${id}`,postData,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
+     const response=await axios.patch(`${BASE_URL}/posts/${id}`,postData,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
      console.log("edited response: ", response);
      if(response.status===200)
      {
@@ -91,7 +92,7 @@ const EditPost = () => {
 
   const getPost = async()=>{
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`)
+      const response = await axios.get(`${BASE_URL}/posts/${id}`)
       setTitle(response.data.title)
       setDescription(response.data.description)
 

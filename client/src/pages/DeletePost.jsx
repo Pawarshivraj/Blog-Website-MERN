@@ -5,6 +5,7 @@ import axios from 'axios';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../api';
 const DeletePost = ({postId:id}) => {
   const navigate=useNavigate();
   const [isLoading,setIsLoading]=useState(false);
@@ -21,7 +22,7 @@ const DeletePost = ({postId:id}) => {
   const removePost = async ()=>{
     setIsLoading(true)
     try {
-      const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${id}`,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}})
+      const response = await axios.delete(`${BASE_URL}/posts/${id}`,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}})
       if(response.status===200)
       {
           if(location.pathname === `/myposts/${currentUser?.id}`)
