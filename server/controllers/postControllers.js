@@ -144,12 +144,17 @@ const editPost= async(req,res,next)=>{
             //get old post form database
             const oldPost=await Post.findById(postId);
             //delete old thumbnail from upload 
-            fs.unlink(path.join(__dirname,'..','uploads',oldPost.thumbnail),async(err)=>{
-                if(err)
-                {
-                    return next(new HttpError(err));
-                }
-            })
+           fs.unlink(path.join(__dirname, '..', 'uploads', oldPost.thumbnail), async (err) => {
+                    if (err) {
+                        if (err.code === 'ENOENT') {
+                            console.log('File does not exist.'); // Handle the case where the file doesn't exist
+                        } else {
+                            return next(new HttpError(err)); // Other errors, pass to error handling middleware
+                        }
+                    } else {
+                        console.log('File deleted successfully.');
+                    }
+                });
             //upload new thumbnail
             const {thumbnail}=req.files;
             //check file size
