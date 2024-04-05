@@ -30,7 +30,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get(
-        `${BASE_URL_IMAGE}/users/${currentUser.id}`,
+        `${BASE_URL}/users/${currentUser.id}`,
         { withCredentials: true, headers: { Authorization: `Bearer ${token}` } }
       );
       const { name, email, avatar } = response.data;
