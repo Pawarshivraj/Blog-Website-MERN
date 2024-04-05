@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import axios from "axios";
 import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
-import { BASE_URL_IMAGE } from "../api";
+import { BASE_URL, BASE_URL_IMAGE } from "../api";
 
 const DashBoard = () => {
   const [posts ,setPosts]=useState([]);
@@ -28,7 +28,7 @@ const DashBoard = () => {
   const fetchPosts =async()=>{
     setIsLoading(true);
    try {
-    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/users/${id}`,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
+    const response = await axios.get(`${BASE_URL}/posts/users/${id}`,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}});
     console.log("DATA: ", response);
     setPosts(response.data);
    } catch (error) {

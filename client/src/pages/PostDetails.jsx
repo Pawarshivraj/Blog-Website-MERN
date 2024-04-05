@@ -21,6 +21,7 @@ const PostDetails = () => {
       setIsLoading(true);
       try {
         const response=await axios.get(`${BASE_URL}/posts/${id}`);
+        console.log(response.data);
         setPost(response.data);
         
       } catch (error) {
@@ -43,7 +44,7 @@ const PostDetails = () => {
           <div className="post-detail__header">
             <PostAuthor authorID={post.creator}  createdAt={post.createdAt} />
             {currentUser?.id === post?.creator && <div className="post-detail__buttons">
-              <Link to={`/posts/edit/${post?.id}`} className="btn sm primary">
+              <Link to={`/posts/edit/${post?._id}`} className="btn sm primary">
                 Edit
               </Link>
                <DeletePost postId={id}/> 
